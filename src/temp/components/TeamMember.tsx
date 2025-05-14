@@ -27,6 +27,8 @@ export default function TeamMember({ member, index, scrollY }: TeamMemberProps) 
     >
       <div className={styles.memberImage}>
         <img src={member.img || "/placeholder.svg"} alt={member.name}/>
+        <h3>{member.name}</h3>
+        <p>{member.role}</p>
         <motion.div
           className={styles.memberOverlay}
           initial={{ opacity: 0 }}
@@ -69,8 +71,6 @@ export default function TeamMember({ member, index, scrollY }: TeamMemberProps) 
           </div>
         </motion.div>
       </div>
-      <h3>{member.name}</h3>
-      <p>{member.role}</p>
     </motion.div>
   )
 }

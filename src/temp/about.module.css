@@ -53,8 +53,11 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  max-width: 1200px;
+  /* max-width: 1200px; */
+  width: 100%;
   margin: 0 auto;
+  position: fixed;
+  background-color: var(--bg-color);
 }
 .logo{
     display:flex;
@@ -167,70 +170,7 @@
   color: var(--primary-color);
 }
 
-/* Hero section */
-/* .hero {
-  background-color: var(--bg-light);
-  padding: 4rem 2rem;
-}
 
-.heroContent {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  align-items: center;
-}
-
-.heroText {
-  text-align: center;
-  max-width: 800px;
-}
-
-.heroText h1 {
-  font-size: 3.7rem;
-  font-weight: 700;
-  margin-bottom: 3rem;
-  color: var(--primary-color);
-}
-
-.heroText p {
-  font-size: 1.25rem;
-  color: var(--text-light);
-  line-height: 1.6;
-  font-weight: 500;
-}
-
-.heroImage {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-}
-
-.imageContainer {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 20px 40px var(--shadow-color);
-}
-
-.imageContainer img {
-  width: 100%;
-  height: auto;
-  display: block;
-  z-index: 1;
-  position: relative;
-}
-
-.imageBg {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: var(--primary-color);
-  opacity: 0.1;
-  z-index: 0;
-} */
 
 .hero {
   position: relative;
@@ -573,6 +513,9 @@
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .memberImage img {
@@ -719,7 +662,6 @@
   left: -1px;
 }
 
-/* upto here */
 .timelineYear {
   display: inline-block;
   padding: 0.4rem 1.2rem;
@@ -954,7 +896,7 @@
 
 .footerLinks {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   gap: 3rem;
 }
 
