@@ -16,7 +16,7 @@ interface TimelineItemProps {
   timelineRef: React.RefObject<HTMLDivElement>
 }
 
-export default function TimelineItem({ item, index, timelineRef }: TimelineItemProps) {
+export default function TimelineItem({ item, index,timelineRef}: TimelineItemProps) {
   const itemRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(itemRef, { once: false, amount: 0.3 })
   const controls = useAnimation()
@@ -117,37 +117,37 @@ export default function TimelineItem({ item, index, timelineRef }: TimelineItemP
   }, [isInView, controls, hasAnimated])
 
   return (
-    <motion.div
-      ref={itemRef}
-      className={`${styles.timelineItem} ${isLeft ? styles.left : styles.right}`}
-      variants={slideVariants}
-      initial="hidden"
-      animate={controls}
-    >
-      <motion.div className={styles.timelineContent} variants={contentVariants} initial="hidden" animate={controls}>
-        <motion.div className={styles.timelineYear} variants={itemVariants}>
-          {item.year}
-        </motion.div>
-        <motion.h3 variants={itemVariants}>{item.title}</motion.h3>
-        <motion.p variants={itemVariants}>{item.description}</motion.p>
-      </motion.div>
-
-      <motion.div
-        className={`${styles.timelineDot} ${isLeft ? styles.dotRight : styles.dotLeft}`}
-        variants={dotVariants}
-        initial="hidden"
-        animate={controls}
-      />
-
-      {index < 3 && (
+    <div ref={timelineRef}>
         <motion.div
-          className={`${styles.timelineConnector} ${isLeft ? styles.connectorRight : styles.connectorLeft}`}
-          variants={lineVariants}
+          ref={itemRef}
+          className={`${styles.timelineItem} ${isLeft ? styles.left : styles.right}`}
+          variants={slideVariants}
           initial="hidden"
           animate={controls}
-        />
-      )}
-    </motion.div>
+        >
+          <motion.div className={styles.timelineContent} variants={contentVariants} initial="hidden" animate={controls}>
+            <motion.div className={styles.timelineYear} variants={itemVariants}>
+              {item.year}
+            </motion.div>
+            <motion.h3 variants={itemVariants}>{item.title}</motion.h3>
+            <motion.p variants={itemVariants}>{item.description}</motion.p>
+          </motion.div>
+          <motion.div
+            className={`${styles.timelineDot} ${isLeft ? styles.dotRight : styles.dotLeft}`}
+            variants={dotVariants}
+            initial="hidden"
+            animate={controls}
+          />
+          {index < 3 && (
+            <motion.div
+              className={`${styles.timelineConnector} ${isLeft ? styles.connectorRight : styles.connectorLeft}`}
+              variants={lineVariants}
+              initial="hidden"
+              animate={controls}
+            />
+          )}
+        </motion.div>
+    </div>
   )
 }
 

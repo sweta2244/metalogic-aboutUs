@@ -5,7 +5,7 @@ import styles from "../about.module.css"
 import { useTheme } from "../hooks/useTheme"
 
 export default function ParticleBackground() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null!)
   const { theme } = useTheme()
   const isDark = theme === "dark"
 

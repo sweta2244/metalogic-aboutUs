@@ -10,7 +10,7 @@ interface TimelineSectionProps {
 }
 
 export default function TimelineSection({ scrollY }: TimelineSectionProps) {
-  const timelineRef = useRef<HTMLDivElement>(null)
+    const timelineRef = useRef<HTMLDivElement>(null!)
 
   const timelineItems = [
     {
@@ -61,14 +61,13 @@ export default function TimelineSection({ scrollY }: TimelineSectionProps) {
       </motion.h2>
 
       <motion.div
-        ref={timelineRef}
         className={styles.timelineContainer}
         initial="hidden"
         animate={scrollY > 950 ? "visible" : "hidden"}
         variants={containerVariants}
       >
         {timelineItems.map((item, index) => (
-          <TimelineItem key={item.year} item={item} index={index} timelineRef={timelineRef} />
+          <TimelineItem key={item.year} item={item} index={index} timelineRef={timelineRef}/>
         ))}
       </motion.div>
     </section>

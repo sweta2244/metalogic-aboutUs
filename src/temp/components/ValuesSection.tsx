@@ -11,7 +11,7 @@ interface ValuesSectionProps {
 }
 
 export default function ValuesSection({ scrollY }: ValuesSectionProps) {
-  const sectionRef = useRef<HTMLElement>(null)
+  const sectionRef = useRef<HTMLElement>(null!)
 
   const values = [
     {
