@@ -1048,6 +1048,7 @@
     font-size: 1.1rem;
   }
 
+
   .aboutText h2 {
     font-size: 2rem;
   }
@@ -1073,6 +1074,8 @@
   .timelineItem.right {
     left: 0;
   }
+
+
 
   .left .timelineContent::after,
   .right .timelineContent::after {
@@ -1113,4 +1116,5 @@
     flex-direction: column;
     gap: 2rem;
   }
+  
 }

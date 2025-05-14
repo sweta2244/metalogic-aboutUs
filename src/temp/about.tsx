@@ -36,6 +36,16 @@ function AboutPage() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  useEffect(() => {
+    document.body.style.overflowX = "hidden"
+    document.documentElement.style.overflowX = "hidden"
+
+    return () => {
+      document.body.style.overflowX = ""
+      document.documentElement.style.overflowX = ""
+    }
+  }, [])
+
   return (
     <div className={`${styles.container} ${isDark ? styles.dark : ""}`}>
       <Header />
