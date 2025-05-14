@@ -1,11 +1,14 @@
 /* Base styles */
 .container {
   --primary-color: #2092dd;
-  --secondary-color: #2c3e50;
+  --primary-color-rgb: 52, 152, 219;
+  --secondary-color: #f5f7fa;
   --accent-color: #e74c3c;
   --text-color: #2092dd;
   --text-light: #2092dd;
   --bg-color: #001F51;
+  --text-light :#2092dd;
+  --btn-color:#2092dd;
   --bg-light: #f5f7fa;
   --bg-dark: #eaeef3;
   --border-color: #e1e4e8;
@@ -20,13 +23,16 @@
 
 /* Dark mode styles */
 .dark {
-  --primary-color: #4dabf7;
-  --secondary-color: #1a1a2e;
+  --primary-color: #f5f7fa;
+  --primary-color-rgb: 77, 171, 247;
+
+  --secondary-color: #f5f7fa;
   --accent-color: #ff6b6b;
   --text-color: #e1e1e1;
   --text-light: #a0a0a0;
   --bg-color: #121212;
   --bg-light: #1e1e1e;
+  --btn-color:white;
   --bg-dark: #2d2d2d;
   --border-color: #333;
   --shadow-color: rgba(0, 0, 0, 0.3);
@@ -59,7 +65,7 @@
 .logo h1 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--primary-color);
+  color: var(--secondary-color);
   margin: 0;
 }
 
@@ -79,7 +85,7 @@
 
 .desktopNav a {
   text-decoration: none;
-  color: var(--text-color);
+  color: var(--secondary-color);
   font-weight: 500;
   transition: color 0.3s ease;
   position: relative;
@@ -182,9 +188,9 @@
 }
 
 .heroText h1 {
-  font-size: 3rem;
+  font-size: 3.7rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   color: var(--primary-color);
 }
 
@@ -192,6 +198,7 @@
   font-size: 1.25rem;
   color: var(--text-light);
   line-height: 1.6;
+  font-weight: 500;
 }
 
 .heroImage {
@@ -255,7 +262,7 @@
 .aboutText p {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: var(--text-light);
+  color: var(--secondary-color);
   margin-bottom: 1.5rem;
 }
 
@@ -273,14 +280,14 @@
 .statNumber {
   font-size: 3rem;
   font-weight: 700;
-  color: var(--primary-color);
+  color: var(--secondary-color);
   display: block;
   margin-bottom: 0.5rem;
 }
 
 .statLabel {
   font-size: 1rem;
-  color: var(--text-light);
+  color: var(--secondary-color);
 }
 
 /* Mission & Vision section */
@@ -323,7 +330,7 @@
 .missionVision p {
   font-size: 1.1rem;
   line-height: 1.7;
-  color: var(--text-light);
+  color: var(--secondary-color);
 }
 
 /* Team section */
@@ -337,7 +344,7 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 3rem;
-  color: var(--secondary-color);
+  color: var(--text-color);
 }
 
 .teamGrid {
@@ -354,15 +361,14 @@
 
 .memberImage {
   position: relative;
-  width: 100%;
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 1rem;
 }
 
 .memberImage img {
-  width: 100%;
-  height: auto;
+  width: 300px;
+  height: 300px;
   display: block;
 }
 
@@ -405,18 +411,20 @@
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: var(--text-color);
+  color: var(--secondary-color);
 }
 
 .teamMember p {
   font-size: 1rem;
-  color: var(--text-light);
+  color: var(--secondary-color);
 }
 
 /* Timeline section */
 .timeline {
   padding: 5rem 2rem;
   background-color: var(--bg-light);
+
+  position: relative;
 }
 
 .timelineContainer {
@@ -435,12 +443,15 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+  opacity: 0.5;
+  border-radius: 4px;
 }
 
 .timelineItem {
   position: relative;
   width: 50%;
   padding: 0 2rem 2rem;
+  z-index: 1;
 }
 
 .timelineItem.left {
@@ -452,41 +463,63 @@
 }
 
 .timelineContent {
-  padding: 1.5rem;
+  padding: 1.8rem;
   background-color: var(--bg-color);
   border-radius: 10px;
   box-shadow: 0 5px 20px var(--shadow-color);
   position: relative;
+  border: 1px solid rgba(var(--primary-color-rgb), 0.1);
+  backdrop-filter: blur(5px);
+  transform-origin: center center;
 }
 
-.timelineContent::after {
-  content: "";
+
+.timelineDot {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   background-color: var(--bg-color);
   border: 4px solid var(--primary-color);
   border-radius: 50%;
+  z-index: 2;
   top: 20px;
-  z-index: 1;
 }
 
-.left .timelineContent::after {
+.dotRight {
   right: -12px;
 }
 
-.right .timelineContent::after {
+.dotLeft {
   left: -12px;
 }
 
+.timelineConnector {
+  position: absolute;
+  width: 2px;
+  background-color: var(--primary-color);
+  z-index: 1;
+  top: 32px;
+  bottom: 0;
+}
+
+.connectorRight {
+  right: -1px;
+}
+
+.connectorLeft {
+  left: -1px;
+}
+
+/* upto here */
 .timelineYear {
   display: inline-block;
-  padding: 0.3rem 1rem;
+  padding: 0.4rem 1.2rem;
   background-color: var(--primary-color);
-  color: white;
+  color: var(--bg-light);
   border-radius: 20px;
   font-weight: 600;
   margin-bottom: 1rem;
+  box-shadow: 0 3px 10px rgba(var(--primary-color-rgb), 0.3);
 }
 
 .timelineContent h3 {
@@ -506,6 +539,18 @@
 .values {
   padding: 5rem 2rem;
   background-color: var(--bg-color);
+   position: relative;
+  overflow: hidden;
+}
+
+.particleCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .valuesGrid {
@@ -514,34 +559,124 @@
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+   position: relative;
+  z-index: 2;
+}
+
+.valueCardContainer {
+  height: 320px;
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
 }
 
 .valueCard {
   padding: 2rem;
   background-color: var(--bg-light);
-  border-radius: 10px;
-  box-shadow: 0 5px 20px var(--shadow-color);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+.valueCardBack {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.valueIconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  position: relative;
+}
+
+.valueIcon {
+  color: var(--primary-color);
+  width: 35px;
+  height: 35px;
 }
 
 .valueCard h3 {
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: var(--primary-color);
+  position: relative;
+  z-index: 2;
 }
 
 .valueCard p {
   font-size: 1rem;
   color: var(--text-light);
   line-height: 1.6;
+  position: relative;
+  z-index: 2;
+}
+
+.valueCardGlow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.flipPrompt {
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  opacity: 0.7;
+}
+
+.valueBackList {
+  text-align: left;
+  margin: 0 0 1.5rem 0;
+  padding: 0 0 0 1.5rem;
+}
+
+.valueBackList li {
+  margin-bottom: 0.8rem;
+  color: var(--text-light);
+  position: relative;
+}
+
+.valueBackList li::before {
+  content: "•";
+  position: absolute;
+  left: -1rem;
+  color: var(--primary-color);
 }
 
 /* Contact CTA section */
 .contactCta {
   padding: 5rem 2rem;
-  background-color: var(--primary-color);
-  color: white;
+  background-color: var(--bg-light);
+  color: var(--text-color);
 }
 
 .ctaContent {
@@ -564,8 +699,8 @@
 
 .ctaButton {
   padding: 0.8rem 2rem;
-  background-color: white;
-  color: var(--primary-color);
+  background-color:var(--btn-color);
+  color: var(--bg-light);
   border: none;
   border-radius: 30px;
   font-size: 1rem;
@@ -581,7 +716,7 @@
 
 /* Footer styles */
 .footer {
-  background-color: var(--secondary-color);
+  background-color: var(--bg-color);
   color: white;
   padding: 4rem 2rem 2rem;
 }

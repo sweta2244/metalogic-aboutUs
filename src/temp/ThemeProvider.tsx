@@ -19,11 +19,9 @@ interface ThemeProviderProps {
 }
 
 export default function ThemeProvider({ children }: ThemeProviderProps) {
-  // Check if we're in the browser and if there's a saved theme preference
   const [theme, setTheme] = useState<Theme>("light")
 
   useEffect(() => {
-    // Check for saved theme preference or system preference
     const savedTheme = localStorage.getItem("theme") as Theme | null
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
 
@@ -35,10 +33,8 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
   }, [])
 
   useEffect(() => {
-    // Save theme preference to localStorage
     localStorage.setItem("theme", theme)
 
-    // Apply theme to document
     if (theme === "dark") {
       document.documentElement.classList.add("dark-theme")
     } else {
